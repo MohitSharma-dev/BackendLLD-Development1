@@ -4,7 +4,7 @@ public class Dog extends Animal{
 //    attempting to assign weaker access privileges
     // same access or a loose one
     @Override
-    private void eat() {
+    public void eat() {
 
     }
 }
