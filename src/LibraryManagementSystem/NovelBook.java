@@ -4,7 +4,7 @@ public class NovelBook extends Book{
     private String genre;
 
     NovelBook(String isbn , String title , String author , String genre){
-        super(isbn , title , author, "NovelBook");
+        super(isbn , title , author, BookType.NOVELBOOK);
         this.genre = genre;
     }
 

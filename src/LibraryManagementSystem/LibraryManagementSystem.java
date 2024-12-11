@@ -30,11 +30,11 @@ public class LibraryManagementSystem {
         return null;
     }
 
-    public Book searchBooks(String criteria , String type){
+    public Book searchBooks(String criteria , BookType type){
         for(Book book : bookInventory){
             if((book.getAuthor().equalsIgnoreCase(criteria) ||
                     book.getTitle().equalsIgnoreCase(criteria))
-                    && book.getType().equals(type) ){
+                    && book.getType() == type ){
                 return book;
             }
         }

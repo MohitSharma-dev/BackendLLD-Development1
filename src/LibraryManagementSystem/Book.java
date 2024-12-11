@@ -5,13 +5,13 @@ public abstract class Book implements Lendable{
     private String title;
     private String author;
     private boolean isAvailable;
-    private String type;
+    private BookType type;
 
     Book(){
         isAvailable = true;
     }
 
-    Book(String isbn, String title, String author, String type){
+    Book(String isbn, String title, String author, BookType type){
         this.isbn = isbn;
         this.title = title;
         this.author = author;
@@ -39,11 +39,11 @@ public abstract class Book implements Lendable{
         return isAvailable;
     }
 
-    public String getType() {
+    public BookType getType() {
         return type;
     }
 
-    public void setType(String type) {
+    public void setType(BookType type) {
         this.type = type;
     }
 
