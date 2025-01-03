@@ -9,10 +9,13 @@ public class Inventory<T extends Item> {
         items = new HashMap<>();
     }
 
-    public void add(T item) {
+    public void add(T item) throws InvalidQuantityException {
+        if(item.getQuantity() < 0){
+            throw new InvalidQuantityException("Quantity is less than equal to zero which is invalid");
+        }
         if(items.containsKey(item.getId())) {
-            System.out.println("Item " + item.getId() + " already exists");
-            return;
+//            System.out.println("Item " + item.getId() + " already exists");
+            throw new DuplicateItemException("Item " + item.getId() + " already exists");
         }
         items.put(item.getId(), item);
     }
