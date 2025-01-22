@@ -8,12 +8,7 @@ public class Client {
         System.out.println("Please tell us which bank do you want to use!");
         String BankName = scanner.nextLine();
 
-        BankAPI bankAPI = null;
-        if(BankName.equals("Yes Bank")){
-            bankAPI = new YesBankAPIAdapter();
-        } else if(BankName.equals("ICICI Bank")){
-            bankAPI = new ICICIBankAPIAdapter();
-        }
+        BankAPI bankAPI = BankAPIFactory.getBankAPIByBankName(BankName);
 
         PhonePe phonePe = new PhonePe(bankAPI);
         phonePe.rechargFasttag(50);
