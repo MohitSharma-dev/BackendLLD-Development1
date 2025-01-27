@@ -15,3 +15,16 @@ public class Client {
         b.getDesc();
     }
 }
+
+
+// Comparator
+// <<Comparator>> : compare()
+// 5 comparators
+
+// Myntra
+
+// Client : RunTime : sort by ratings
+
+// PriceComparator
+// RatingsComparator
+// TrendingComparator
