@@ -8,7 +8,22 @@ import TicTacToe.strategies.WinningStrategy;
 import java.util.List;
 
 public class GameController {
-//    private Game game;
+
+    //Singleton for GameController:
+    private static GameController instance = null;
+    private GameController(){}
+    public static GameController getInstance(){
+        if(instance ==null) {
+            synchronized(GameController.class) {
+                if (instance == null) {
+                    instance = new GameController();
+                }
+            }
+        }
+        return instance;
+    }
+
+    //    private Game game;
     public Game startGame(
             int size,
             List<Player> players,
@@ -19,7 +34,8 @@ public class GameController {
 //            1. Only one Bot is allowed
 //            2. All the players should have different symbol
 //            3. Count of players = size - 1
-        return new Game(size , players , winningStrategies);
+        //return new Game(size , players , winningStrategies);
+        return new Game.GameBuilder(size,players,winningStrategies).build();
     }
 
     public void makeMove(Game game){

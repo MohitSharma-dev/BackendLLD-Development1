@@ -16,7 +16,8 @@ public class Client {
 
 //        Controller : Singleton class : HW
 
-        GameController gameController = new GameController();
+        //GameController gameController = new GameController();
+        GameController gameController = GameController.getInstance();
 
         Player player1 = new HumanPlayer("Akash" , PlayerType.HUMAN , new Symbol('X'));
         Player player2 = new Bot("Botty", BotDifficultyLevel.EASY);
