@@ -160,4 +160,47 @@ public class Game {
         // if game wants to print something
         board.display();
     }
+
+    //makeMove
+    public void makeMove(){
+        Player currPLayer = players.get(nextPlayerIndex);
+        Move move = currPLayer.mmakeMove(board);
+
+
+        //update cell
+        List<List<Cell>> grid = getBoard().getGrid();
+        int row = move.getCell().getRow();
+        int col = move.getCell().getCol();
+        grid.get(row).get(col).setCellState(CellState.FILLED);
+        grid.get(row).get(col).setSymbol();
+
+        moves.add(move);
+        ++nextPlayerIndex;
+
+        //check winner
+        for( WinningStrategy winStrategy: winningStrategies) {
+            boolean result = winStrategy.checkWinner(board,move);
+            if(result == true)
+                this.gameState=GameState.SUCCESS;
+        }
+
+        boolean isGridFull = true;
+        for(List<Cell> gridRow :grid){
+            for(Cell cell: gridRow){
+                if(cell.getCellState() == CellState.EMPTY){
+                    isGridFull = false;
+                    break;
+                }
+
+            }
+        }
+
+        if(gameState.equals(GameState.SUCCESS))
+        {
+            winner=currPLayer;
+        }
+        if(!gameState.equals(GameState.SUCCESS) && isGridFull ==true )
+            this.gameState=GameState.DRAW;
+
+    }
 }
