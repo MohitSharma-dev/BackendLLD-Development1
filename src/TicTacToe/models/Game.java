@@ -172,7 +172,7 @@ public class Game {
         int row = move.getCell().getRow();
         int col = move.getCell().getCol();
         grid.get(row).get(col).setCellState(CellState.FILLED);
-        grid.get(row).get(col).setSymbol();
+        grid.get(row).get(col).setSymbol(currPLayer.getSymbol());
 
         moves.add(move);
         ++nextPlayerIndex;
