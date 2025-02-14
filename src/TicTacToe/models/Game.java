@@ -165,6 +165,32 @@ public class Game {
         }
 
     }
+
+    public void undo(){
+//        just study what you did while making the move and reverse it
+        if(moves.size() == 0){
+            System.out.println("No moves to undo!");
+            return;
+        }
+
+        Move lastMove = moves.get(moves.size()-1);
+        moves.remove(moves.size()-1);
+
+        lastMove.getCell().setCellState(CellState.EMPTY);
+        lastMove.getCell().setSymbol(null);
+
+        nextPlayerIndex--;
+//        (a - b) % n = (a - b + n) % n
+        nextPlayerIndex = (nextPlayerIndex + players.size()) % players.size();
+
+//        we should go and update the counts hashmaps
+        for(WinningStrategy winningStrategy : winningStrategies){
+            winningStrategy.handleUndo(board, lastMove);
+        }
+
+        setGameState(GameState.IN_PROGRESS);
+        setWinner(null);
+    }
 }
 
 // make Move

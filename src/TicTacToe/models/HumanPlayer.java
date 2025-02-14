@@ -30,7 +30,7 @@ public class HumanPlayer extends Player{
     }
 
     @Override
-    public Move makeMove(Board board) {
+    public Move makeMove() {
         System.out.println("Please enter the row in which you want to make the move :");
         int row = scanner.nextInt();
         System.out.println("Please enter the column in which you want to make the move :");

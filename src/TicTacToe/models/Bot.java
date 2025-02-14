@@ -19,10 +19,10 @@ public class Bot extends Player {
     }
 
     @Override
-    public Move makeMove(Board board) {
+    public Move makeMove() {
         return BotPlayingStrategyFactory
                 .getBotPlayingStrategy(botDifficultyLevel)
-                .makeMove(board, this);
+                .makeMove(getGame().getBoard(), this);
     }
 }
 

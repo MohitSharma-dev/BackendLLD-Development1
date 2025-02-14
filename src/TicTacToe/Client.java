@@ -5,8 +5,10 @@ import TicTacToe.models.*;
 import TicTacToe.strategies.RowWinningStrategy;
 
 import java.util.List;
+import java.util.Scanner;
 
 public class Client {
+    public static Scanner scanner = new Scanner(System.in);
     public static void main(String[] args) {
         // Client will be interacting with the GameController
 //        GameController gameController = new GameController();
@@ -21,17 +23,30 @@ public class Client {
         Player player1 = new HumanPlayer("Akash" , PlayerType.HUMAN , new Symbol('X'));
         Player player2 = new Bot("Botty", BotDifficultyLevel.EASY);
 
+
         Game game = gameController.startGame(
                 3,
                 List.of(player1 , player2),
                 List.of(new RowWinningStrategy())
         );
 
+        for(Player player : game.getPlayers()) {
+            player.setGame(game);
+        }
+
         gameController.display(game);
 
         while(gameController.getGameState(game) == GameState.IN_PROGRESS){
             gameController.makeMove(game);
             gameController.display(game);
+
+            System.out.println("Do you want to undo the move ? [Y/N]");
+            String undoInput =  scanner.nextLine();
+            if(undoInput.equals("Y")){
+                gameController.undo(game);
+                System.out.println("Successfully undone!");
+                gameController.display(game);
+            }
         }
 
 //        check if winner is there or draw
