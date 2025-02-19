@@ -147,7 +147,7 @@ public class Game {
 
         System.out.println("It's " + currentPlayer.getName() + "'s turn. Please make your move!");
 
-        Move move = currentPlayer.makeMove(board);
+        Move move = currentPlayer.makeMove();
 
         if(!validate(move)){
             System.out.println("Invalid move ! Please try again!");
