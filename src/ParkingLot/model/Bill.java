@@ -13,4 +13,6 @@ public class Bill extends BaseModel{
     private Gate exitGate;
     private Operator operator;
 
+
+
 }

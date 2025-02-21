@@ -9,11 +9,11 @@ import ParkingLot.service.TicketService;
 public class TicketController {
     private TicketService ticketService;
 
-    TicketController(TicketService ticketService) {
+    public TicketController(TicketService ticketService) {
         this.ticketService = ticketService;
     }
 
-    IssueTicketResponseDTO issueTicket(IssueTicketRequestDTO request){
+    public IssueTicketResponseDTO issueTicket(IssueTicketRequestDTO request){
         IssueTicketResponseDTO response = new IssueTicketResponseDTO();
         try {
 
@@ -21,7 +21,8 @@ public class TicketController {
                     request.getLicensePlate(),
                     request.getOwnerName(),
                     request.getVehicleType(),
-                    request.getGateId()
+                    request.getGateId(),
+                    request.getParkingLotId()
             );
 
             response.setResponseStatus(ResponseStatus.SUCCESS);

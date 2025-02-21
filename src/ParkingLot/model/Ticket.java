@@ -9,6 +9,9 @@ public class Ticket extends BaseModel {
     private Operator operator;
     private Gate entryGate;
 
+    public Ticket(){
+    }
+
     public Vehicle getVehicle() {
         return vehicle;
     }

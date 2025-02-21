@@ -7,6 +7,14 @@ public abstract class BaseModel {
     private Date createdAt;
     private Date updatedAt;
 
+    public BaseModel(){
+        this.id = 0;
+    }
+
+    public BaseModel(int id) {
+        this.id = id;
+    }
+
     public int getId() {
         return id;
     }
